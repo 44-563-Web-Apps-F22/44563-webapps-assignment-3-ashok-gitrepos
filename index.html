@@ -62,5 +62,37 @@
             </tr>
         </table>
 
+        <hr>
+        <h3>Code Display</h3>
+        <blockquote> 
+            Change JQUERY version on a single page Wordpress
+            </blockquote>
+            <a href="https://stackoverflow.com/questions/73720337/change-jquery-version-on-a-single-page-wordpress"> 
+                jQuery version on a single page wordpress
+            </a>
+            <h3>Snippet from wordpress</h3>
+            <pre>
+            <xmp>
+                function wpb_modify_jquery() {
+
+                    //check if front-end is being viewed
+                    if (!is_admin() && is_page('251')) {
+                
+                        // Remove default WordPress jQuery
+                        wp_deregister_script('jquery');
+                
+                        // Register new jQuery script via Google Library    
+                        wp_register_script('jquery', 'https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js', false, '1.12.4');
+                
+                        // Enqueue the script   
+                        wp_enqueue_script('jquery');
+                    }
+                }
+                
+                // Execute the action when WordPress is initialized
+                add_action('init', 'wpb_modify_jquery');
+            </xmp>
+            </pre>
+
     </body>
 </html>
